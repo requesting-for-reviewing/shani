@@ -1,19 +1,47 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Continue</title>
-  <script type="text/javascript">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Add this to make your page responsive -->
+    <title>Continue</title>
+    <style>
+        body {
+            margin: 0;
+            background-color: #f3f3f3;
+            font-family: Arial, sans-serif;
+            padding: 20px; /* padding to keep countdown from touching edges of viewport */
+        }
+        #countdown {
+            position: absolute; /* positioning countdown */
+            top: 0; /* at the top */
+            left: 0; /* and left */
+            font-size: 2em;
+            color: #333;
+        }
+        @media (max-width: 600px) { /* Responsive design for smaller screens */
+            #countdown {
+                font-size: 1.5em; /* Reduce font size on smaller screens */
+            }
+        }
+    </style>
+    <script type="text/javascript">
+        var count = 3; // countdown start from 3
+        var redirectUrl = "request.html"; 
 
-    (function() {
-        // Display a message in the console
-        console.log("Redirecting you to the desired page...");
+        function startCountdown() {
+            if (count > 0) {
+                document.getElementById('countdown').innerHTML = "Please wait...";
+                count--;
+            } else {
+                clearInterval(countdownTimer); // clear the interval
+                window.location.href = redirectUrl;
+            }
+        }
 
-        // Redirect the user
-        window.location.replace("request.html");
-    })();
-  </script>
+        var countdownTimer = setInterval(startCountdown, 1000); // call the function every second
+    </script>
 </head>
 <body>
-  <p>You will be cont iue to the desired page (https://a5b46af5-7955-4898-b48e-7e3f2dc1fbda-00-2v8p2l5kgm7gy.worf.replit.dev/) instantly. Please wait...</p>
+    <h1 id="countdown">Please wait...</h1>
 </body>
 </html>
